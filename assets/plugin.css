@@ -1,0 +1,177 @@
+/* ===========================================================================
+ *  Camera Director — "Gothic Chic" theme
+ *  Minimalist, high-contrast, ink-black glass with a single restrained gold
+ *  accent. All selectors are namespaced under #camdir-root so nothing leaks
+ *  into the host UI (the plugin ships preflight-off, utilities-free CSS).
+ * ========================================================================= */
+
+#camdir-root {
+  --cd-ink: #0b0c10;
+  --cd-glass: rgba(11, 12, 16, 0.92);
+  --cd-line: rgba(196, 178, 122, 0.28);
+  --cd-line-strong: rgba(196, 178, 122, 0.55);
+  --cd-gold: #c9b27a;
+  --cd-gold-dim: #8c7c4e;
+  --cd-text: #e7e3d6;
+  --cd-text-dim: #9a9486;
+  --cd-danger: #b5544e;
+  --cd-radius: 14px;
+  font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+}
+
+/* Launcher chip ----------------------------------------------------------- */
+.camdir-chip {
+  position: fixed;
+  top: 72px;
+  right: 18px;
+  z-index: 99998;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--cd-gold);
+  background: var(--cd-glass);
+  border: 1px solid var(--cd-line-strong);
+  border-radius: 11px;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.camdir-chip:hover { transform: translateY(-1px); color: #f0e6c4; border-color: var(--cd-gold); }
+
+/* Panel shell ------------------------------------------------------------- */
+.camdir-panel {
+  position: fixed;
+  top: 72px;
+  right: 18px;
+  z-index: 99999;
+  width: 248px;
+  padding: 16px 16px 14px;
+  color: var(--cd-text);
+  background:
+    linear-gradient(180deg, rgba(28, 26, 20, 0.55), rgba(11, 12, 16, 0.2)),
+    var(--cd-glass);
+  backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid var(--cd-line);
+  border-radius: var(--cd-radius);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  font-size: 12.5px;
+  user-select: none;
+}
+.camdir-panel[hidden] { display: none; }
+/* A hair-thin gold frame inset reads as engraved metal — the "chic" cue. */
+.camdir-panel::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(196, 178, 122, 0.12);
+  border-radius: 9px;
+  pointer-events: none;
+}
+.camdir-panel.camdir-armed { border-color: var(--cd-line-strong); }
+
+/* Header ------------------------------------------------------------------ */
+.camdir-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.camdir-title {
+  display: flex; align-items: center; gap: 8px;
+  font-family: "Cinzel", "Trajan Pro", Georgia, serif;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  color: #f3ecd6;
+}
+.camdir-title svg { color: var(--cd-gold); }
+.camdir-tools { display: flex; align-items: center; gap: 6px; }
+
+.camdir-lang {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--cd-gold); background: transparent;
+  border: 1px solid var(--cd-line); border-radius: 7px;
+  padding: 3px 7px; cursor: pointer;
+}
+.camdir-lang:hover { border-color: var(--cd-gold); }
+
+.camdir-icon-btn {
+  display: grid; place-items: center;
+  width: 26px; height: 26px;
+  color: var(--cd-text-dim); background: transparent;
+  border: 1px solid transparent; border-radius: 7px; cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.camdir-icon-btn:hover { color: var(--cd-text); background: rgba(255, 255, 255, 0.05); }
+.camdir-icon-btn.camdir-danger:hover { color: var(--cd-danger); }
+
+/* Master switch ----------------------------------------------------------- */
+.camdir-master {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--cd-line); border-radius: 9px;
+  cursor: pointer;
+}
+.camdir-master input { accent-color: var(--cd-gold); width: 15px; height: 15px; }
+.camdir-master-state {
+  margin-left: auto; font-weight: 700; letter-spacing: 0.1em; font-size: 10.5px;
+  color: var(--cd-gold-dim);
+}
+.camdir-armed .camdir-master-state { color: var(--cd-gold); }
+
+/* Slider rows ------------------------------------------------------------- */
+.camdir-grid { display: flex; flex-direction: column; gap: 9px; }
+.camdir-row { display: flex; flex-direction: column; gap: 4px; }
+.camdir-label { display: flex; align-items: center; gap: 6px; color: var(--cd-text-dim); }
+.camdir-label > span:first-of-type { color: var(--cd-text); }
+.camdir-label svg { color: var(--cd-gold-dim); }
+.camdir-val { margin-left: auto; color: var(--cd-gold); font-variant-numeric: tabular-nums; }
+
+.camdir-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--cd-gold-dim), rgba(255, 255, 255, 0.08));
+  border-radius: 3px; outline: none; cursor: pointer;
+}
+.camdir-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--cd-gold); border: 1px solid #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(201, 178, 122, 0.18);
+}
+.camdir-slider::-moz-range-thumb {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--cd-gold); border: 1px solid #1a1a1a;
+}
+
+/* Buttons / actions ------------------------------------------------------- */
+.camdir-actions { display: flex; gap: 7px; margin: 13px 0 0; flex-wrap: wrap; }
+.camdir-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  flex: 1 1 auto; justify-content: center;
+  padding: 7px 9px; font-size: 11.5px;
+  color: var(--cd-text); background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--cd-line); border-radius: 8px; cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.camdir-btn:hover { border-color: var(--cd-gold); color: #f3ecd6; }
+.camdir-btn svg { color: var(--cd-gold-dim); }
+.camdir-btn--primary {
+  color: var(--cd-ink); background: var(--cd-gold); border-color: var(--cd-gold);
+  font-weight: 700;
+}
+.camdir-btn--primary svg { color: var(--cd-ink); }
+.camdir-btn--primary:hover { background: #d8c084; }
+
+/* Presets ----------------------------------------------------------------- */
+.camdir-section-title {
+  margin: 16px 0 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--cd-gold-dim); border-bottom: 1px solid var(--cd-line); padding-bottom: 5px;
+}
+.camdir-presets { display: flex; flex-direction: column; gap: 5px; max-height: 168px; overflow-y: auto; }
+.camdir-preset {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 8px; background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--cd-line); border-radius: 8px;
+}
+.camdir-preset-name { flex: 1 1 auto; color: var(--cd-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.camdir-preset .camdir-btn { flex: 0 0 auto; padding: 4px 8px; }
+.camdir-empty { color: var(--cd-text-dim); font-style: italic; padding: 6px 2px; }
+
+.camdir-hint { margin-top: 12px; font-size: 10px; line-height: 1.5; color: var(--cd-text-dim); }
