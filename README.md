@@ -1,5 +1,11 @@
 # 🎥 Camera Director — Slopsmith plugin · **v0.1**
 
+
+https://github.com/user-attachments/assets/d0ffaa9d-f47f-46da-9c6d-ea3b9ac7a6db
+
+
+
+
 > 🇬🇧 English · [🇪🇸 Español](./README.es.md)
 
 Floating panel to control the **3D Highway** camera in real time: orbit, pan,
