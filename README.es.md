@@ -44,12 +44,6 @@ cada panel por separado.
 - **Chip arrastrable** — ponelo donde quieras; recuerda la posición.
 - **Tema metálico** — panel y botones de metal cepillado, color solo en el borde.
 
-## Archivos / cómo funciona
-
-Mirá **[GUIA.md](./GUIA.md)** para saber qué archivos importan, cómo carga
-Slopsmith el plugin y la aclaración de los dos `screen.js`. Los detalles de
-integración con el renderer (para mantenedores) están en
-**[DEVELOPERS.md](./DEVELOPERS.md)**.
 
 ## Licencia
 

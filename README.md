@@ -42,11 +42,6 @@ tabs control each panel's camera independently.
 - **Draggable launcher chip** — drop it anywhere; position is remembered.
 - **Metal theme** — brushed-metal panel + buttons, accent only on the border.
 
-## Files / how it works
-
-See **[GUIA.md](./GUIA.md)** for which files matter, how Slopsmith loads the
-plugin, and the two-`screen.js` clarification. Renderer integration details for
-maintainers are in **[DEVELOPERS.md](./DEVELOPERS.md)**.
 
 ## License
 
